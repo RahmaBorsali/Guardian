@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GuardianTrack</string>
+    <string name="perm_label_read_contacts">Lire les contacts d\'urgence</string>
+    <string name="perm_desc_read_contacts">Permet à une application de lire les contacts d\'urgence de GuardianTrack. Restreint aux applications système ou de même signature.</string>
+</resources>
