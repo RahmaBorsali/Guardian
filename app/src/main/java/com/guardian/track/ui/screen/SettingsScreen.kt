@@ -256,41 +256,7 @@ fun SettingsScreen(
                     color = PlasmaGreen.copy(alpha = 0.7f)
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
 
-                // SMS Simulation toggle
-                SettingToggleRow(
-                    icon = Icons.Filled.Sms,
-                    title = "Mode Simulation SMS",
-                    subtitle = "Remplace les SMS réels par des notifications (mode test)",
-                    isChecked = uiState.isSmsSimulation,
-                    onCheckedChange = { viewModel.updateSmsSimulation(it) },
-                    accentColor = SolarAmber
-                )
-
-                if (!uiState.isSmsSimulation) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(CriticalRed.copy(alpha = 0.1f))
-                            .border(1.dp, CriticalRed.copy(alpha = 0.3f), RoundedCornerShape(8.dp))
-                            .padding(10.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "⚠️",
-                            fontSize = 16.sp
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Mode réel activé ! Les SMS seront envoyés au numéro configuré.",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = CriticalRed
-                        )
-                    }
-                }
             }
         }
 

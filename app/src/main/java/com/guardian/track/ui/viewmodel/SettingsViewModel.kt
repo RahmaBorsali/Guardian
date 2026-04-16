@@ -23,7 +23,6 @@ data class SettingsUiState(
     val sensitivityThreshold: Float = PreferencesManager.DEFAULT_SENSITIVITY_THRESHOLD,
     val isDarkMode: Boolean = PreferencesManager.DEFAULT_DARK_MODE,
     val emergencyNumber: String = "",
-    val isSmsSimulation: Boolean = PreferencesManager.DEFAULT_SMS_SIMULATION,
     val isServiceEnabled: Boolean = PreferencesManager.DEFAULT_SERVICE_ENABLED,
     val contacts: List<EmergencyContact> = emptyList(),
     val showAddContactDialog: Boolean = false,
@@ -64,11 +63,7 @@ class SettingsViewModel @Inject constructor(
                     _uiState.value = _uiState.value.copy(emergencyNumber = value)
                 }
             }
-            launch {
-                preferencesManager.isSmsSimulation.collect { value ->
-                    _uiState.value = _uiState.value.copy(isSmsSimulation = value)
-                }
-            }
+
             launch {
                 preferencesManager.isServiceEnabled.collect { value ->
                     _uiState.value = _uiState.value.copy(isServiceEnabled = value)
@@ -97,11 +92,6 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun updateSmsSimulation(enabled: Boolean) {
-        viewModelScope.launch {
-            preferencesManager.setSmsSimulation(enabled)
-        }
-    }
 
     fun addContact(name: String, phoneNumber: String) {
         viewModelScope.launch {

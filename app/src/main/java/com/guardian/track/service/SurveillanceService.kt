@@ -226,11 +226,7 @@ class SurveillanceService : Service(), SensorEventListener {
         }
     }
 
-    /**
-     * Send emergency SMS or simulate based on settings.
-     */
     private suspend fun sendEmergencySms(message: String) {
-        val isSimulation = preferencesManager.isSmsSimulation.first()
         val emergencyNumber = securePreferences.getEmergencyNumber()
 
         if (emergencyNumber.isBlank()) {
@@ -238,25 +234,24 @@ class SurveillanceService : Service(), SensorEventListener {
             return
         }
 
-        if (isSimulation) {
-            // Simulation mode: show notification + log
-            Log.d(TAG, "📱 [SMS SIMULÉ] → $emergencyNumber: $message")
-            sendSimulatedSmsNotification(emergencyNumber, message)
-        } else {
-            // Real mode: send actual SMS
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
-                == PackageManager.PERMISSION_GRANTED
-            ) {
-                try {
-                    val smsManager = SmsManager.getDefault()
-                    smsManager.sendTextMessage(emergencyNumber, null, message, null, null)
-                    Log.d(TAG, "SMS envoyé à $emergencyNumber")
-                } catch (e: Exception) {
-                    Log.e(TAG, "Erreur envoi SMS", e)
+        // Real mode: send actual SMS
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+            == PackageManager.PERMISSION_GRANTED
+        ) {
+            try {
+                val smsManager = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                    getSystemService(android.telephony.SmsManager::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    SmsManager.getDefault()
                 }
-            } else {
-                Log.w(TAG, "Permission SMS non accordée")
+                smsManager?.sendTextMessage(emergencyNumber, null, message, null, null)
+                Log.d(TAG, "SMS envoyé à $emergencyNumber")
+            } catch (e: Exception) {
+                Log.e(TAG, "Erreur envoi SMS", e)
             }
+        } else {
+            Log.w(TAG, "Permission SMS non accordée")
         }
     }
 
@@ -312,19 +307,7 @@ class SurveillanceService : Service(), SensorEventListener {
         manager.notify(System.currentTimeMillis().toInt(), notification)
     }
 
-    private fun sendSimulatedSmsNotification(number: String, message: String) {
-        val notification = NotificationCompat.Builder(this, GuardianTrackApp.CHANNEL_SMS_SIM)
-            .setContentTitle("📱 SMS Simulé → $number")
-            .setContentText(message)
-            .setSmallIcon(android.R.drawable.ic_dialog_email)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(message))
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true)
-            .build()
 
-        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
-        manager.notify(System.currentTimeMillis().toInt(), notification)
-    }
 
     // ── Sensor data broadcast for UI ─────────────────────────────
 

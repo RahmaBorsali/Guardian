@@ -31,11 +31,9 @@ class PreferencesManager @Inject constructor(
         val KEY_SENSITIVITY_THRESHOLD = floatPreferencesKey("sensitivity_threshold")
         val KEY_DARK_MODE = booleanPreferencesKey("dark_mode_enabled")
         val KEY_EMERGENCY_NUMBER = stringPreferencesKey("emergency_number")
-        val KEY_SMS_SIMULATION = booleanPreferencesKey("sms_simulation_enabled")
         val KEY_SERVICE_ENABLED = booleanPreferencesKey("service_enabled")
 
         const val DEFAULT_SENSITIVITY_THRESHOLD = 15.0f
-        const val DEFAULT_SMS_SIMULATION = true
         const val DEFAULT_DARK_MODE = true
         const val DEFAULT_SERVICE_ENABLED = false
     }
@@ -70,17 +68,6 @@ class PreferencesManager @Inject constructor(
     suspend fun setEmergencyNumber(number: String) {
         dataStore.edit { prefs ->
             prefs[KEY_EMERGENCY_NUMBER] = number
-        }
-    }
-
-    // SMS simulation mode (default: ACTIVE as required by spec)
-    val isSmsSimulation: Flow<Boolean> = dataStore.data.map { prefs ->
-        prefs[KEY_SMS_SIMULATION] ?: DEFAULT_SMS_SIMULATION
-    }
-
-    suspend fun setSmsSimulation(enabled: Boolean) {
-        dataStore.edit { prefs ->
-            prefs[KEY_SMS_SIMULATION] = enabled
         }
     }
 
