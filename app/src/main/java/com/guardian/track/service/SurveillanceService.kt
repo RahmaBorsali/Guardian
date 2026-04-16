@@ -217,7 +217,8 @@ class SurveillanceService : Service(), SensorEventListener {
                 sendAlertNotification("Chute détectée", "Une chute a été détectée à ${java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.FRANCE).format(java.util.Date())}")
 
                 // Send SMS (or simulate)
-                sendEmergencySms("ALERTE GuardianTrack: Chute détectée! Position: $lat, $lng")
+                val mapLink = if (lat != 0.0 || lng != 0.0) " Position: https://maps.google.com/?q=$lat,$lng" else ""
+                sendEmergencySms("ALERTE GuardianTrack: Chute détectée!$mapLink")
 
                 Log.d(TAG, "Fall incident recorded: lat=$lat, lng=$lng")
             } catch (e: Exception) {
