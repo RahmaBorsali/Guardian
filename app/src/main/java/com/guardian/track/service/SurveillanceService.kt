@@ -247,6 +247,14 @@ class SurveillanceService : Service(), SensorEventListener {
                 }
                 smsManager?.sendTextMessage(emergencyNumber, null, message, null, null)
                 Log.d(TAG, "SMS envoyé à $emergencyNumber")
+                
+                // Add notification that SMS was sent
+                val maskedNumber = if (emergencyNumber.length > 4) {
+                    "*****" + emergencyNumber.substring(emergencyNumber.length - 4) // Example: *****1234
+                } else {
+                    "*****"
+                }
+                sendAlertNotification("SMS Envoyé", "Un SMS d'alerte a été envoyé au numéro $maskedNumber")
             } catch (e: Exception) {
                 Log.e(TAG, "Erreur envoi SMS", e)
             }
