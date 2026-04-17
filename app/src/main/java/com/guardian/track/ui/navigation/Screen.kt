@@ -9,9 +9,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 
-/**
- * Sealed class representing navigation destinations.
- */
+
 sealed class Screen(
     val route: String,
     val title: String,

@@ -6,10 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-/**
- * Retrofit API service for GuardianTrack remote sync.
- * Uses suspend functions for coroutine integration.
- */
+
 interface GuardianApiService {
 
     @POST("alerts")

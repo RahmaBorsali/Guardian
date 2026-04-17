@@ -8,10 +8,7 @@ import androidx.room.Query
 import com.guardian.track.data.local.entity.EmergencyContactEntity
 import kotlinx.coroutines.flow.Flow
 
-/**
- * DAO for emergency contact CRUD operations.
- * Includes Cursor-returning query for ContentProvider integration.
- */
+
 @Dao
 interface EmergencyContactDao {
 

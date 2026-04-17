@@ -2,10 +2,7 @@ package com.guardian.track.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-/**
- * Network DTO for sending incident alerts to the remote API.
- * Separated from Room Entity and Domain Model per clean architecture.
- */
+
 data class IncidentDto(
     @SerializedName("id")
     val id: Long? = null,

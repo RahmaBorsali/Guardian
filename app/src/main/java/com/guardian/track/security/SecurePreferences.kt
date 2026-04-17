@@ -8,11 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Secure storage for sensitive data using EncryptedSharedPreferences.
- * Encrypts the emergency phone number and API key locally.
- * Uses AES256_GCM for value encryption and AES256_SIV for key encryption.
- */
+
 @Singleton
 class SecurePreferences @Inject constructor(
     @ApplicationContext private val context: Context

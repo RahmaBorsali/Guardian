@@ -12,11 +12,7 @@ import com.guardian.track.data.repository.IncidentRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
-/**
- * WorkManager Worker for deferred synchronization of unsynced incidents.
- * Scheduled with Constraints(NETWORK_CONNECTED) to trigger when network returns.
- * Uses setExpedited() for Android 12+ compatibility.
- */
+
 @HiltWorker
 class SyncWorker @AssistedInject constructor(
     @Assisted appContext: Context,

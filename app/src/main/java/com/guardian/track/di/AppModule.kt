@@ -11,9 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-/**
- * Hilt module providing location services and WorkManager instances.
- */
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {

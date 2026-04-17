@@ -7,13 +7,7 @@ import com.guardian.track.domain.model.EmergencyContact
 import com.guardian.track.domain.model.Incident
 import com.guardian.track.domain.model.IncidentType
 
-/**
- * Mapper extension functions for converting between Entity, DTO, and Domain models.
- * This separation adds value by:
- * - Allowing Room schema changes without affecting UI
- * - Allowing API response changes without affecting Room
- * - Keeping domain models clean of framework annotations
- */
+
 
 // ── Entity → Domain ──────────────────────────────────────────────
 

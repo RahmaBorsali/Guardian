@@ -13,12 +13,6 @@ import com.guardian.track.service.SurveillanceService
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
-/**
- * WorkManager Worker to restart SurveillanceService after boot on Android 12+.
- * Used as the recommended solution for background service start restrictions
- * introduced in API 31. setExpedited() ensures fast execution while complying
- * with the new restrictions.
- */
 @HiltWorker
 class ServiceRestartWorker @AssistedInject constructor(
     @Assisted appContext: Context,

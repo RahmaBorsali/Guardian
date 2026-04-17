@@ -13,9 +13,7 @@ import com.guardian.track.ui.screen.DashboardScreen
 import com.guardian.track.ui.screen.HistoryScreen
 import com.guardian.track.ui.screen.SettingsScreen
 
-/**
- * Navigation graph hosting all three main screens.
- */
+
 @Composable
 fun GuardianNavigation(
     navController: NavHostController,

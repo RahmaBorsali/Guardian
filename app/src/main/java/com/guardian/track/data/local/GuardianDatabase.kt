@@ -7,10 +7,7 @@ import com.guardian.track.data.local.dao.IncidentDao
 import com.guardian.track.data.local.entity.EmergencyContactEntity
 import com.guardian.track.data.local.entity.IncidentEntity
 
-/**
- * Room database for GuardianTrack.
- * Contains incidents and emergency contacts tables.
- */
+
 @Database(
     entities = [IncidentEntity::class, EmergencyContactEntity::class],
     version = 1,

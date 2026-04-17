@@ -2,11 +2,7 @@ package com.guardian.track.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-/**
- * GuardianTrack — Unique Cybersecurity Color Palette
- * Deep navy/charcoal base with neon-electric accent gradient
- * Deliberately distinctive from standard Material templates.
- */
+
 
 // ── Primary Background Tones ──
 val NightAbyss = Color(0xFF0A0E1A)         // Deepest background

@@ -11,16 +11,7 @@ import androidx.work.OutOfQuotaPolicy
 import com.guardian.track.service.SurveillanceService
 import com.guardian.track.worker.ServiceRestartWorker
 
-/**
- * Static BroadcastReceiver registered in manifest for ACTION_BOOT_COMPLETED.
- * Restarts the SurveillanceService after device reboot.
- *
- * Android 12+ Compatibility:
- * Since Android 12 (API 31), apps cannot start foreground services from background
- * (BroadcastReceiver) except in specific exemptions. BOOT_COMPLETED is an allowed
- * exemption, but as a robust fallback, we also use WorkManager with setExpedited()
- * which is the recommended approach for API 31+.
- */
+
 class BootReceiver : BroadcastReceiver() {
 
     companion object {

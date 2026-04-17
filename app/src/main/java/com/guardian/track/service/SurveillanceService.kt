@@ -39,16 +39,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.sqrt
 
-/**
- * Foreground Service that continuously monitors accelerometer data
- * and implements fall detection via free-fall + impact algorithm.
- *
- * Algorithm:
- * Phase 1 (Free-fall): magnitude < 3 m/s² for > 100ms
- * Phase 2 (Impact): magnitude > threshold (default 15 m/s²) within 200ms window
- *
- * Sensor callbacks run on Dispatchers.Default to avoid blocking the main thread.
- */
 @AndroidEntryPoint
 class SurveillanceService : Service(), SensorEventListener {
 

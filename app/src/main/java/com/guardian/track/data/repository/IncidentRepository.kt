@@ -32,13 +32,7 @@ import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Source of truth for incidents. Combines Room + Retrofit + WorkManager.
- * Implements offline-first strategy:
- * - Always store locally first
- * - Attempt immediate sync if network available
- * - Schedule WorkManager for deferred sync on failure
- */
+
 @Singleton
 class IncidentRepository @Inject constructor(
     private val incidentDao: IncidentDao,

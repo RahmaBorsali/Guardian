@@ -41,9 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guardian.track.ui.theme.*
 
-/**
- * Glassmorphism card with frosted border and subtle background gradient.
- */
+
 @Composable
 fun GlassCard(
     modifier: Modifier = Modifier,

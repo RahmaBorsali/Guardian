@@ -11,10 +11,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Repository for emergency contacts CRUD operations.
- * Single source of truth backed by Room database.
- */
+
 @Singleton
 class ContactRepository @Inject constructor(
     private val contactDao: EmergencyContactDao

@@ -7,10 +7,6 @@ import androidx.room.Query
 import com.guardian.track.data.local.entity.IncidentEntity
 import kotlinx.coroutines.flow.Flow
 
-/**
- * DAO for incident CRUD operations.
- * Returns Flow for reactive UI updates and suspend functions for write operations.
- */
 @Dao
 interface IncidentDao {
 

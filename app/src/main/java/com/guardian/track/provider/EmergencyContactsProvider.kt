@@ -11,20 +11,7 @@ import com.guardian.track.data.local.GuardianDatabase
 import com.guardian.track.data.local.entity.EmergencyContactEntity
 import kotlinx.coroutines.runBlocking
 
-/**
- * ContentProvider exposing emergency contacts to authorized apps.
- *
- * URI contractuelle: content://com.guardian.track.provider/emergency_contacts
- *
- * Protected by custom permission com.guardian.track.READ_EMERGENCY_CONTACTS
- * with protectionLevel="signature|privileged", meaning only apps signed with
- * the same certificate or system-privileged apps can access this data.
- *
- * Security considerations:
- * - URI validation prevents content provider injection attacks
- * - Only specific URIs are matched (no wildcards for arbitrary paths)
- * - Input sanitization on all ContentValues
- */
+
 class EmergencyContactsProvider : ContentProvider() {
 
     companion object {

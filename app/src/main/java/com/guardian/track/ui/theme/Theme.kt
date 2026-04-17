@@ -12,10 +12,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-/**
- * GuardianTrack Material 3 Theme.
- * Supports both dark (default, cybersecurity aesthetic) and light modes.
- */
+
 
 private val DarkColorScheme = darkColorScheme(
     primary = CyberCyan,

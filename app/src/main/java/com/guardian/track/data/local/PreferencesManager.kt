@@ -14,11 +14,6 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * DataStore Preferences manager for GuardianTrack user settings.
- * Stores: sensitivity threshold, dark mode, emergency number, SMS simulation mode.
- * Note: Emergency number is stored encrypted via SecurePreferences separately.
- */
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "guardian_settings")
 
 @Singleton
